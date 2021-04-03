@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="span3 well">
+        <div class="center">
+        <img src="assets/image/Profile/Profile.jpg" width="140" height="140" class="img-circle" >
+        <h3><span>Name  -</span><b>{{CustomerName | uppercase}}</b></h3>
+        <h4><span>Email Id  -</span><b>{{CustomerEmaiId}}</b></h4>
+        <h4><span>Contact No -</span><b>{{CustomerPhoneNo}}</b></h4>
+        </div>
+    </div>
+    <div class="span3 well">
+        <table class="table table-hover">
+            <tr class="table-success">
+                <th>
+                    Oreder Id
+                </th>
+                <th>
+                    Oreder Date
+                </th>
+                <th>
+                    Delivery Date
+                </th>
+                <th>
+                    Payment Mode
+                </th>
+                <th>
+                    Oreder Amount
+                </th>
+            </tr>
+            <tr *ngFor="let item of orederDetails" class="table-info">
+                <td>{{item.Order_Id}}</td>
+                <td>{{item.Order_Date}}</td>
+                <td>{{item.Order_DeliveryDate}}</td>
+                <td>{{item.Payment_Mode}}</td>
+                <td>{{item.Order_Amount | currency:'INR'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

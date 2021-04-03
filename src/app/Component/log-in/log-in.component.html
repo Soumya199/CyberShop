@@ -1,0 +1,38 @@
+<form #logInForm='ngForm' (ngSubmit)="LogInForm(logInForm)">
+    <div class="alert alert-success" *ngIf="authenticated==true">{{message}}</div>
+  <div class="alert alert-danger" *ngIf="authenticated==false">{{message}}</div>
+  <!-- <div class="alert alert-danger">{{errormessage}}</div> -->
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <b>Log In Here  <span class="glyphicon glyphicon-hand-down"></span></b>
+            </div>
+    
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter your Registered Email *" value=""name="Customer_EmailId" required ngModel [(ngModel)]="user.Customer_EmailId" #Customer_EmailId="ngModel"/>
+                            <div class="alert alert-danger" role="alert" *ngIf="Customer_EmailId.touched  && !Customer_EmailId.valid">
+                                <span class="help=bpx" >Please Enter a valid Email</span>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control"placeholder="Your Password *" value="" name="Customer_Password" required minlength="8" ngModel [(ngModel)]="user.Customer_Password" #Customer_Password="ngModel"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customer_Password.touched  && !Customer_Password.valid">
+                              <div *ngIf="Customer_Password.errors.required">
+                                  Password is required.
+                                </div>
+                                <div *ngIf="Customer_Password.errors.minlength">
+                                  Password must be at least 8 characters long.
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="LogInForm" [disabled]="!logInForm.valid">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+

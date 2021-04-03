@@ -1,0 +1,47 @@
+<body>
+    <div class="alert alert-success" *ngIf="dataSaved==1">{{message}}</div>
+    <div class="alert alert-danger" *ngIf="dataSaved==0">{{message}}</div>
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img src={{productDetail.Product_Image}} /></div>
+                        </div>
+                        <ul class="preview-thumbnail nav nav-tabs">
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
+                                        src={{productDetail.Product_Image}} /></a></li>
+                        </ul>
+
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{productDetail.Product_Name}}</h3>
+                        <div class="rating">
+                            <app-star-rating></app-star-rating>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <p class="product-description">{{productDetail.Product_Description}}</p>
+                        <h4 class="price">current price: <span>{{productDetail.Product_Price | currency:'INR'}}</span>
+                        </h4>
+                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
+                        </p>
+                        <h5 class="colors">colors:
+                            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                            <span class="color green"></span>
+                            <span class="color blue"></span>
+                        </h5>
+                        <div class="action">
+                            <button type="button" class="btn btn-info" (click)="AddTocart(productDetail.Product_Image,productDetail.Product_Id,productDetail.Product_Name,productDetail.Product_Price)">Add To Cart</button>
+                            &nbsp;
+                            &nbsp;
+                            <button type="button" class="btn btn-success" [routerLink]="['/Category']"
+                                routerLinkActive="router-link-active">Category</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

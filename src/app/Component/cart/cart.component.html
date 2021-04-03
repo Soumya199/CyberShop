@@ -1,0 +1,47 @@
+<div class="container">
+   <div class="card shopping-cart">
+       <div class="alert alert-danger">{{Message}}</div>
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shipping cart
+                <a class="btn btn-outline-info btn-sm pull-right" [routerLink]="['/Home']" routerLinkActive="router-link-active" >Continiu shopping</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="alert alert-danger" *ngIf="cartDetails.length===0">Your Cart Is Empty</div>
+            <div class="card-body" *ngFor="let item of cartDetails">
+                    <!-- PRODUCT -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                                <img class="img-responsive" src="{{item.Product_Image}}" alt="prewiew" width="120" height="80">
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong>{{item.Product_Name}}</strong></h4>
+                            <h4>
+                                <strong>{{item.Total_Amounts}}</strong>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-right: 0%;">
+                               <button class="btn btn-danger"  (click)="DeleteItem(item.Cart_Id)">
+                                   Remove <span class="glyphicon glyphicon-trash"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                    <div class="row">
+                        <a>Order Type COD</a>
+                    </div>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <a  class="btn btn-success pull-right" (click)="ConfirmOrder()" >Checkout</a>
+                    <div class="pull-right" style="margin: 5px">
+                        Total price: <strong>{{TotalAmount}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

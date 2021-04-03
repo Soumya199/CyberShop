@@ -1,0 +1,75 @@
+
+<div>
+    <h1>Tv</h1>
+</div>
+<div class="alert alert-success" *ngIf="dataSaved==1">{{message}}</div>
+<div class="alert alert-danger" *ngIf="dataSaved==0">{{message}}</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of TvCategory">
+        <div class="card-mb-4 shadow-sm">
+            <b>{{item.Product_Name}}</b>
+            <img class="bd-placeholder-img card-img-top p-2" height="250" width="70"
+            src={{item.Product_Image}}>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{item.Product_Description | slice:0:100}}</p>
+            <strong >{{item.Product_Price | currency: 'INR'}}<span><app-star-rating [rating]="item.Product_Raing"></app-star-rating></span></strong>
+        </div>
+        <div class="d-flex justify-content-between align-item-center">
+            <div>         
+                <button type="button" class="btn btn-info" [routerLink]="['/ProductDetails']" routerLinkActive="router-link-active" (click)="ViewProductDetail(item.Product_Id)">View Detail</button>
+                 &nbsp;
+                 &nbsp;
+                <button type="button" class="btn btn-success" (click)="AddTocart(item.Product_Image,item.Product_Id,item.Product_Name,item.Product_Price)">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h1>AC</h1>
+</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of AcCategory">
+        <div class="card-mb-4 shadow-sm">
+            <b>{{item.Product_Name}}</b>
+            <img class="bd-placeholder-img card-img-top p-2" height="250" width="70"
+            src={{item.Product_Image}}>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{item.Product_Description | slice:0:100}}</p>
+            <strong >{{item.Product_Price | currency: 'INR'}}<span><app-star-rating [rating]="item.Product_Raing"></app-star-rating></span></strong>
+        </div>
+        <div class="d-flex justify-content-between align-item-center">
+            <div>         
+                <button type="button" class="btn btn-info" [routerLink]="['/ProductDetails']" routerLinkActive="router-link-active" (click)='ViewProductDetail(item.Product_Id)' >View Detail</button>
+                 &nbsp;
+                 &nbsp;
+                <button type="button" class="btn btn-success" (click)="AddTocart(item.Product_Image,item.Product_Id,item.Product_Name,item.Product_Price)">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h1>MOBILE</h1>
+</div>
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of MobileCategory">
+        <div class="card-mb-4 shadow-sm">
+            <b>{{item.Product_Name}}</b>
+            <img class="bd-placeholder-img card-img-top p-2" height="250" width="70"
+            src={{item.Product_Image}}>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{item.Product_Description | slice:0:100}}</p>
+            <strong >{{item.Product_Price | currency: 'INR'}}<span><app-star-rating [rating]="item.Product_Raing"></app-star-rating></span></strong>
+        </div>
+        <div class="d-flex justify-content-between align-item-center">
+            <div>         
+                <button type="button" class="btn btn-info" [routerLink]="['/ProductDetails']" routerLinkActive="router-link-active" (click)='ViewProductDetail(item.Product_Id)' >View Detail</button>
+                 &nbsp;
+                 &nbsp;
+                <button type="button" class="btn btn-success" (click)="AddTocart(item.Product_Image,item.Product_Id,item.Product_Name,item.Product_Price)">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

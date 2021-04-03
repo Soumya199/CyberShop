@@ -1,0 +1,95 @@
+<form #regForm='ngForm' (ngSubmit)="Register(regForm)">
+  <div class="alert alert-success" *ngIf="dataSaved==1">{{message}}</div>
+  <div class="alert alert-danger" *ngIf="message!=null || dataSaved==0">{{message}}</div>
+  <div class="container register-form">
+      <div class="form">
+          <div class="note">
+              <b>Register Here  <span class="glyphicon glyphicon-hand-down"></span></b>
+          </div>
+  
+          <div class="form-content">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Your Name *" value="" name="Customr_Name"
+                           required minlength="4" ngModel #Customr_Name="ngModel"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customr_Name.touched  && !Customr_Name.valid">
+                              <div *ngIf="Customr_Name.errors.required">
+                                  Name is required.
+                                </div>
+                                <div *ngIf="Customr_Name.errors.minlength">
+                                  Name must be at least 4 characters long.
+                                </div>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Phone Number *" value="" name="Customer_Contact" required minlength="10"
+                           ngModel #Customer_Contact="ngModel" pattern="[6-9]{1}[0-9]{9}"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customer_Contact.touched  && !Customer_Contact.valid">
+                              <div *ngIf="Customer_Contact.errors.required">
+                                  Phone No is required.
+                                </div>
+                                <div *ngIf="Customer_Contact.errors.minlength">
+                                  Phone no must be at least 10 characters long.
+                                </div>
+                                <div *ngIf="Customer_Contact.errors.pattern">*Enter Correct Number</div>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <input type="email" class="form-control" placeholder="Enter Your Email *" value=""name="Customer_EmailId" 
+                          required ngModel #Customer_EmailId="ngModel" pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customer_EmailId.touched  && !Customer_EmailId.valid">
+                              <span>Please Enter a valid Email</span>
+                              <div *ngIf="Customer_EmailId.errors.pattern">*Enter valid Email Id</div>
+                            </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter your state *" value="" name="Customer_State" required minlength="4" ngModel #Customer_State="ngModel"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customer_State.touched  && !Customer_State.valid">
+                              <div *ngIf="Customer_State.errors.required">
+                                  State Name is required.
+                                </div>
+                                <div *ngIf="Customer_State.errors.minlength">
+                                  State must be at least 4 characters long.
+                                </div>
+                            </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <input type="password" class="form-control"placeholder="Your Password *" value="" name="Customer_Password" required minlength="8" ngModel #Customer_Password="ngModel"/>
+                          <div class="alert alert-danger" role="alert" *ngIf="Customer_Password.touched  && !Customer_Password.valid">
+                              <div *ngIf="Customer_Password.errors.required">
+                                  Password is required.
+                                </div>
+                                <div *ngIf="Customer_Password.errors.minlength">
+                                  Password must be at least 8 characters long.
+                                </div>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                          <input type="password" class="form-control" placeholder="Confirm Password *" value="" #CPassword="ngModel" ngModel name="CPassword" pattern="{{Customer_Password.value}}" />
+                          <div class="alert alert-danger" *ngIf="CPassword.touched && !CPassword.valid"> 
+                            <div *ngIf="CPassword.errors.required">*Confirm Password Required</div>  
+                               <div *ngIf="CPassword.errors.pattern">Password and ConfirmPassword Mismatch</div>
+                           </div>
+                      </div>
+                      <div class="form-group">
+                          <input type="text" class="form-control"  placeholder="Address *" value=""name="Customer_Address" required minlength="8" ngModel #Customer_Address="ngModel"/>
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control"placeholder="Your Pincode *" value="" name="Custermer_Pincode" required minlength="6" maxlength="6" ngModel #Custermer_Pincode="ngModel"/>
+                        <div class="alert alert-danger" role="alert" *ngIf="Custermer_Pincode.touched  && !Custermer_Pincode.valid">
+                            <div *ngIf="Custermer_Pincode.errors.required">
+                                Pincode is required.
+                              </div>
+                              <div *ngIf="Custermer_Pincode.errors.minlength || Custermer_Pincode.errors.maxlength">
+                                Pincode must be  6 characters long.
+                              </div>
+                          </div>
+                    </div>
+                  </div>
+              </div>
+              <button type="submit" class="btnSubmit" id="Register" [disabled]="!regForm.valid">Submit</button>
+          </div>
+      </div>
+  </div>
+</form>
